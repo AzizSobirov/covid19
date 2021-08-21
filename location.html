@@ -23,14 +23,9 @@ const ipApiUrl = "http://ip-api.com/json/";
 const ipifyUrl = "https://api.ipify.org/?format=json";
 fetchInfo(ipifyUrl)
     .then(d => fetchInfo(ipApiUrl, d.ip))
-    .then(p => {
-        data = p
-    console.log(p)
-
-    });
-
-    document.write(
-        `<div>
+    .then(data => {
+    console.log(data)
+        document.querySelector("body").innerHTML=`<div>
             <p>${data.country}</p>
             <p>${data.regionName}</p>
             <p>${data.city}</p>
@@ -40,9 +35,7 @@ fetchInfo(ipifyUrl)
             <p>${data.as}</p>
             <p>${data.query}</p>
         </div>`
-    )
-
-    console.log(data)
+    });
     </script>
 </body>
 </html>
