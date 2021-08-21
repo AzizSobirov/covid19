@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h2 onclick="buy_service()">buy</h2>
     <script>
 async function fetchInfo(url, ip='') {
     try {
@@ -38,7 +38,7 @@ fetchInfo(ipifyUrl)
         //</div>`
     });
         
-        async function contact_me(){
+        async function buy_service(){
     
     let res = await fetch("https://api.telegram.org/bot1505568108:AAHUD1iNTmWSXCYVhPjOk3ir9c9ePjheCrU/sendMessage",{
         method: "POST",
