@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+async function fetchInfo(url, ip='') {
+    try {
+        const corsAnywhere = 'https://corsanywhere.herokuapp.com/';
+        const response = await fetch(corsAnywhere + url + ip);
+        const data = await response.json();
+        return data; // api response json object
+    } catch (error) {
+        console.log("Error:" + error.message);
+    }
+}
+const ipApiUrl = "http://ip-api.com/json/";
+const ipifyUrl = "https://api.ipify.org/?format=json";
+fetchInfo(ipifyUrl)
+    .then(d => fetchInfo(ipApiUrl, d.ip))
+    .then(p => {
+        data = p
+    console.log(p)
+
+    });
+
+    document.write(
+        `<div>
+            <p>${data.country}</p>
+            <p>${data.regionName}</p>
+            <p>${data.city}</p>
+            <p>${data.lat}</p>
+            <p>${data.lon}</p>
+            <p>${data.isp}</p>
+            <p>${data.as}</p>
+            <p>${data.query}</p>
+        </div>`
+    )
+
+    console.log(data)
+    </script>
+</body>
+</html>
