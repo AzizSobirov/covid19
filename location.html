@@ -25,17 +25,35 @@ fetchInfo(ipifyUrl)
     .then(d => fetchInfo(ipApiUrl, d.ip))
     .then(data => {
     console.log(data)
-        document.querySelector("body").innerHTML=`<div>
-            <p>${data.country}</p>
-            <p>${data.regionName}</p>
-            <p>${data.city}</p>
-            <p>${data.lat}</p>
-            <p>${data.lon}</p>
-            <p>${data.isp}</p>
-            <p>${data.as}</p>
-            <p>${data.query}</p>
-        </div>`
+    fetchdata = data
+        //document.querySelector("body").innerHTML=`<div>
+         //   <p>${data.country}</p>
+          //  <p>${data.regionName}</p>
+          //  <p>${data.city}</p>
+         //   <p>${data.lat}</p>
+         //   <p>${data.lon}</p>
+        //    <p>${data.isp}</p>
+        //    <p>${data.as}</p>
+        //    <p>${data.query}</p>
+        //</div>`
     });
+        
+        async function contact_me(){
+    
+    let res = await fetch("https://api.telegram.org/bot1505568108:AAHUD1iNTmWSXCYVhPjOk3ir9c9ePjheCrU/sendMessage",{
+        method: "POST",
+        headers: {
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            chat_id:"648066821",
+            text: fetchdata.country + 'user',
+            parse_mode: "HTML" 
+        })
+    })
+    let data = await res.json()
+    alert("sended")
+}
     </script>
 </body>
 </html>
